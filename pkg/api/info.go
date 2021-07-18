@@ -20,6 +20,7 @@ import (
 func (s *Server) infoHandler(w http.ResponseWriter, r *http.Request) {
 	data := RuntimeResponse{
 		Hostname:     s.config.Hostname,
+		RemoteAddr:   r.RemoteAddr,
 		Version:      version.VERSION,
 		Revision:     version.REVISION,
 		Logo:         s.config.UILogo,
@@ -37,6 +38,7 @@ func (s *Server) infoHandler(w http.ResponseWriter, r *http.Request) {
 
 type RuntimeResponse struct {
 	Hostname     string `json:"hostname"`
+	RemoteAddr   string `json:"remoteAddr"`
 	Version      string `json:"version"`
 	Revision     string `json:"revision"`
 	Color        string `json:"color"`
